@@ -55,4 +55,9 @@ export class HomePage {
 
   }
 
+  borrar_anima( idx: number ){
+    
+    this.animales.splice( idx , 1);
+  }
+
 }
