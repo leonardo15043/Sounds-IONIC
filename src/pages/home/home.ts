@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { ANIMALES } from '../../data/data.animales';
 import { Animal } from '../../interfaces/animal.interface';
 
-import { Refresher } from 'ionic-angular';
+import { Refresher , reorderArray} from 'ionic-angular';
 
 
 
@@ -17,6 +17,7 @@ export class HomePage {
   animales:Animal[] = [];
   audio = new Audio(); 
   audioTiempo: any;
+  ordenando:boolean = false;
 
   constructor(public navCtrl: NavController) {
 
@@ -69,6 +70,10 @@ export class HomePage {
     setTimeout(()=>{
        refresher.complete();
     },1500)
+  }
+
+  reordenarAnimales( indices ){
+      this.animales = reorderArray( this.animales , indices );
   }
 
 }
