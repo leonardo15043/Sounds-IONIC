@@ -3,6 +3,9 @@ import { NavController } from 'ionic-angular';
 import { ANIMALES } from '../../data/data.animales';
 import { Animal } from '../../interfaces/animal.interface';
 
+import { Refresher } from 'ionic-angular';
+
+
 
 
 @Component({
@@ -17,7 +20,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
 
-    this.animales = ANIMALES.splice(0);
+    this.animales = ANIMALES.slice(0);
 
   }
 
@@ -58,6 +61,14 @@ export class HomePage {
   borrar_anima( idx: number ){
     
     this.animales.splice( idx , 1);
+  }
+
+  recargarAnimales( refresher:Refresher ){
+    console.log("inicio del refresh");
+      this.animales = ANIMALES.slice(0);
+    setTimeout(()=>{
+       refresher.complete();
+    },1500)
   }
 
 }
