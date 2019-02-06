@@ -10,12 +10,13 @@
 
     <ion-list>
 
-        <ion-item *ngFor="let animal of animales">
+        <ion-item *ngFor="let animal of animales" (click)="reproducir( animal )">
             <ion-avatar item-left>
                 <img [src]="animal.imagen">
             </ion-avatar>
             <h2>{{ animal.nombre }}</h2>
-            <p></p>
+            <ion-icon *ngIf="!animal.reproduciendo" name="play" item-right></ion-icon>
+            <ion-icon *ngIf="animal.reproduciendo" name="pause" item-right></ion-icon>
         </ion-item>
 
 
